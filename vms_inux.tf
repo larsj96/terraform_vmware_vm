@@ -105,13 +105,13 @@ locals {
       "disksize"  = 60
     }
 
-      int_lb1 = {
+      intlb1 = {
       "num_cpus"  = "2"
       "memory"    = "8192"
       "portgroup" = "${local.fortigate_block.fortigate_onprem_internal_lb.name}"
       "disksize"  = 60
     }
-      ext_lb1 = {
+      extlb1 = {
       "num_cpus"  = "2"
       "memory"    = "8192"
       "portgroup" = "${local.fortigate_block.fortigate_onprem_external_lb.name}"
