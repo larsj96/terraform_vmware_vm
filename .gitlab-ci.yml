@@ -1,0 +1,39 @@
+stages:
+  - validate
+  - plan
+  - apply
+image:
+  name: hashicorp/terraform:latest
+  entrypoint:
+    - '/usr/bin/env'
+    - 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+before_script:
+  - export VSPHERE_PASSWORD=${vsphere_password}
+  - export VSPHERE_USER=${vsphere_user}
+  - export VSPHERE_SERVER=${vsphere_server}
+  - export TF_ADDRESS=${state_address}
+  - export TF_HTTP_USERNAME=${username}
+  - export TF_HTTP_PASSWORD=${password}
+  - export TF_HTTP_ADDRESS=${state_address}
+  - rm -rf .terraform
+  - terraform --version
+  - terraform init
+validate:
+  stage: validate
+  script:
+    - terraform validate
+plan:
+  stage: plan
+  script:
+    - terraform plan -out "planfile"
+  dependencies:
+    - validate
+  artifacts:
+    paths:
+      - planfile
+apply:
+  stage: apply
+  script:
+    - terraform apply -input=false "planfile"
+  dependencies:
+    - plan
