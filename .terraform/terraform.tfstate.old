@@ -1,0 +1,28 @@
+{
+    "version": 3,
+    "serial": 1,
+    "lineage": "43783d57-1797-7418-79f1-d0e19bc092e0",
+    "backend": {
+        "type": "cloud",
+        "config": {
+            "hostname": null,
+            "organization": "lanilsen",
+            "token": null,
+            "workspaces": {
+                "name": "Homelabb-VMWare_vm",
+                "tags": null
+            }
+        },
+        "hash": 299962385
+    },
+    "modules": [
+        {
+            "path": [
+                "root"
+            ],
+            "outputs": {},
+            "resources": {},
+            "depends_on": []
+        }
+    ]
+}

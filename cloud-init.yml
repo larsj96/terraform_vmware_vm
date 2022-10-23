@@ -1,0 +1,16 @@
+#cloud-config
+
+users:
+ - name: devops
+   groups: [ sudo ]
+   sudo: ALL=(ALL) NOPASSWD:ALL
+   shell: /bin/bash
+   lock_passwd: false
+   #passwd: "DevOps1234!"
+   passwd: $6$Iq3oorVEcddtvp0$bGJRuEQPRM/qWuk7rOJauvVYDu64Hame/ngtje9obtlgt8Gda737GgJWEzI7rKNDOz8iupYN6U8e2ChkjYIQ7.
+   ssh-authorized-keys:
+   - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCz/JZYBglJD0gw7t+0dABSpnwNFxel+o0DjdHsxQki/mKXvSe9Ah/udCLXI1KZFLxoFHOJkcglFYBG3ht2LO2WfGKTbrTMVi8L7ly4ZuNvNACeMxPbxULKLLa4VCJdYgeM7BNk6N5VCzQbfexw7ULVoRhRfnawp9Y4DDZ1GaGW4bA3L+9KFPkLgIv6hn/tJGUdZDfyc60RaTArEcOeKbwxB2Ds5Y8fiVFrXCBV9UE6nr5OYqXftd6Y9Z5W4C69Qekus4IHNlktF1ofu4bZl2YlYC2MlhcRsU0txVnby3z0JqnfjpdrrO/hszKookivv+apMzdZq8on3ubg544wfv8zlbO/4nnM5oUmw2zD1BSOXsnsmg4CwRPAR/Znn2hu5YYQVWF0xegDSqMslBVu2vKIbgZa8gzJtYi+9/zeYBj9pW+/VfP3pjwZh9dqeTbz13KtMiOHuB2MNEp+eOUw+yvGhp2BbjWFaX0Xy+X5Q8V9TkbzqiDSqY7aUCdHOou1Xlc= ljn@DESKTOP-DFCHU80
+   - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCpruL39xAMiQi6H1UxPLot9c/5r2dnkzA5Mo9WhDMlG+LCFaJiOil5uoKqdW14HPOulROqLKeWTAX+qoLa9UpOqbnSms3sEwFEcRomvRUYGw+DSwOgsKuV72cx9jm7MdqnOUybZWZ0nPqd+fMOKPb7U4x3T3pJApBCkOa5nk6H73CvlN9J9fY0oeBNJpQPjrI4VUeYRluqO58MkanYGA6v86ByCxgOwrHCb+htacHu4D9wcNcAkbEyJYe5YmQnwm/yu5EGSAbQ7f65tmQbSruPbieVaiSxxn3Ev3T9NAWXEM7dBSvZ5T7bDxxb+RslKWZMwsN1dUZFjwZg/khB2UdNVlobQHoT5PMq1sN7a/hkpL35AoPvwGvldd4N7IciGiiukC8ZJDh7efomPUdQQ5itdTe6SybiaVTttOQA0v8ZwA2l/oOvzodD1sEWCLowyZu0AiryfxbjFvG7mEb1N4aGeP0aBKPSCHOheu6ow4QpfrWWO+gI4pkMXuEuT+Xx7IE= l. nilsen@DESKTOP-DFCHU80
+
+bootcmd:
+  - echo "Hello, World! from cloudinit - terraform" >> /tmp/test.txt
