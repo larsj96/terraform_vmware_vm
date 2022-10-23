@@ -72,7 +72,7 @@ locals {
     }
 
     docker1 = {
-      "num_cpus"  = "16"
+      "num_cpus"  = "4"
       "memory"    = "32192"
       "portgroup" = "${local.fortigate_block.fortigate_onprem_k8s.name}"
       "disksize"  = 60
@@ -98,6 +98,13 @@ locals {
       "portgroup" = "${local.fortigate_block.fortigate_onprem_bastion.name}"
       "disksize"  = 60
     }
+      plex1 = {
+      "num_cpus"  = "8"
+      "memory"    = "32192"
+      "portgroup" = "${local.fortigate_block.fortigate_onprem_plex.name}"
+      "disksize"  = 60
+    }
+
 
   }
 }
