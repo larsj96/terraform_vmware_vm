@@ -17,7 +17,6 @@
 # }
 
 
-
 locals {
   fortigate = {
     fortigate = data.terraform_remote_state.Homelabb-Fortigate.outputs.networks.networks.subnets.fortigate_onprem_
@@ -78,6 +77,26 @@ locals {
       "disksize"  = 60
     }
 
+    k8s_master1 = {
+      "num_cpus"  = "4"
+      "memory"    = "32192"
+      "portgroup" = "${local.fortigate_block.fortigate_onprem_k8s.name}"
+      "disksize"  = 60
+    }
+
+    k8s_worker1 = {
+      "num_cpus"  = "4"
+      "memory"    = "32192"
+      "portgroup" = "${local.fortigate_block.fortigate_onprem_k8s.name}"
+      "disksize"  = 60
+    }
+    k8s_worker2 = {
+      "num_cpus"  = "4"
+      "memory"    = "32192"
+      "portgroup" = "${local.fortigate_block.fortigate_onprem_k8s.name}"
+      "disksize"  = 60
+    }
+
     gitlab1 = {
       "num_cpus"  = "2"
       "memory"    = "8192"
@@ -92,12 +111,12 @@ locals {
       "disksize"  = 60
     }
 
-      secunion1 = {
-      "num_cpus"  = "4"
-      "memory"    = "32192"
-      "portgroup" = "${local.fortigate_block.fortigate_onprem_bastion.name}"
-      "disksize"  = 60
-    }
+    #   secunion1 = {
+    #   "num_cpus"  = "4"
+    #   "memory"    = "32192"
+    #   "portgroup" = "${local.fortigate_block.fortigate_onprem_bastion.name}"
+    #   "disksize"  = 60
+    # }
       plex1 = {
       "num_cpus"  = "8"
       "memory"    = "32192"
@@ -118,18 +137,25 @@ locals {
       "disksize"  = 60
     }
 
-      openvpn1 = {
-      "num_cpus"  = "2"
-      "memory"    = "8192"
-      "portgroup" = "${local.fortigate_block.fortigate_onprem_sslvpn.name}"
-      "disksize"  = 60
-    }
+    #   openvpn1 = {
+    #   "num_cpus"  = "2"
+    #   "memory"    = "8192"
+    #   "portgroup" = "${local.fortigate_block.fortigate_onprem_sslvpn.name}"
+    #   "disksize"  = 60
+    # }
   }
 }
+
+
 
 output "vm" {
   value = local.linux_vms
 }
+
+
+
+
+
 
 resource "vsphere_virtual_machine" "linux_vms" {
   for_each = local.linux_vms
