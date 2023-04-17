@@ -57,18 +57,18 @@ data "http" "example" {
 
 locals {
   linux_vms = {
-    bast1 = {
-      "num_cpus"  = "2"
-      "memory"    = "16192"
-      "portgroup" = "${local.fortigate_block.fortigate_onprem_bastion.name}"
-      "disksize"  = 60
-    }
-    telegraf1 = {
-      "num_cpus"  = "2"
-      "memory"    = "8192"
-      "portgroup" = "${local.fortigate_block.fortigate_onprem_bastion.name}"
-      "disksize"  = 60
-    }
+    # bast1 = {
+    #   "num_cpus"  = "2"
+    #   "memory"    = "16192"
+    #   "portgroup" = "${local.fortigate_block.fortigate_onprem_bastion.name}"
+    #   "disksize"  = 60
+    # }
+    # telegraf1 = {
+    #   "num_cpus"  = "2"
+    #   "memory"    = "8192"
+    #   "portgroup" = "${local.fortigate_block.fortigate_onprem_bastion.name}"
+    #   "disksize"  = 60
+    # }
 
     docker1 = {
       "num_cpus"  = "4"
@@ -117,19 +117,19 @@ locals {
     #   "portgroup" = "${local.fortigate_block.fortigate_onprem_bastion.name}"
     #   "disksize"  = 60
     # }
-      plex1 = {
-      "num_cpus"  = "8"
-      "memory"    = "32192"
-      "portgroup" = "${local.fortigate_block.fortigate_onprem_plex.name}"
-      "disksize"  = 60
-    }
+    #   plex1 = {
+    #   "num_cpus"  = "8"
+    #   "memory"    = "32192"
+    #   "portgroup" = "${local.fortigate_block.fortigate_onprem_plex.name}"
+    #   "disksize"  = 60
+    # }
 
-      intlb1 = {
-      "num_cpus"  = "2"
-      "memory"    = "8192"
-      "portgroup" = "${local.fortigate_block.fortigate_onprem_internal_lb.name}"
-      "disksize"  = 60
-    }
+    #   intlb1 = {
+    #   "num_cpus"  = "2"
+    #   "memory"    = "8192"
+    #   "portgroup" = "${local.fortigate_block.fortigate_onprem_internal_lb.name}"
+    #   "disksize"  = 60
+    # }
       extlb1 = {
       "num_cpus"  = "2"
       "memory"    = "8192"
