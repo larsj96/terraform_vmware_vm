@@ -3,3 +3,6 @@ provider "vsphere" {
   allow_unverified_ssl = true
 }
 
+provider "tfe" {
+  # Add any required provider arguments here
+}
