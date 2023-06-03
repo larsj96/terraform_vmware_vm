@@ -1,21 +1,6 @@
 
 
-
-
-
-
-
-
-# resource "vsphere_distributed_port_group" "portgroup" {
-
-#   for_each = data.terraform_remote_state.Homelabb-Fortigate.outputs.networks.networks.subnets.fortigate_onprem_
-
-#   name                            = replace("${each.key}", "fortigate_onprem_", "")
-#   distributed_virtual_switch_uuid = vsphere_distributed_virtual_switch.dvs.id
-#   vlan_id                         = each.value.vlanid
-
-# }
-
+# Fetch Network config (port group & vlan) from VMWARE_MGMT project / state, see data.tf
 
 locals {
   fortigate = {
@@ -29,17 +14,6 @@ locals {
     }
   }
 }
-
-
-
-
-
-#   network_interface = {
-#     "ipv4_address" = "${cidrhost("${local.fortigate_block.fortigate_onprem_bastion.cidr_block.cidr_block}", 2)}"
-#     "ipv4_netmask" = "${split("/", "${local.fortigate_block.fortigate_onprem_bastion.cidr_block.cidr_block}")}" [1]
-#     "ipv4_gateway" = "${cidrhost("${local.fortigate_block.fortigate_onprem_bastion.cidr_block.cidr_block}", 1)}"
-#   }
-# }
 
 
 
@@ -124,10 +98,6 @@ locals {
 }
 
 
-
-output "vm" {
-  value = local.linux_vms
-}
 
 
 
@@ -237,68 +207,4 @@ output "vm" {
 #     ignore_changes = [disk]
 #   }
 
-# }
-
-
-# // Provisioning Windows Server from the VM template
-# resource "vsphere_virtual_machine" "windows_vm" {
-#   for_each = var.windows_vms
-#   name     = each.key
-
-#   resource_pool_id = data.vsphere_compute_cluster.compute_cluster.resource_pool_id
-#   # datastore_id     = data.vsphere_datastore.datastore.id
-
-#   datastore_cluster_id = data.vsphere_datastore_cluster.datastore_cluster.id
-
-#   num_cpus = each.value.num_cpus
-#   memory   = each.value.memory
-
-#   cpu_hot_add_enabled    = "true"
-#   cpu_hot_remove_enabled = "true"
-
-#   memory_hot_add_enabled = "true"
-
-#   guest_id  = data.vsphere_virtual_machine.windowstemplate.guest_id
-#   scsi_type = data.vsphere_virtual_machine.windowstemplate.scsi_type
-
-
-#   firmware = "bios"
-
-#   network_interface {
-#     network_id   = data.vsphere_network.window_network[each.key].id
-#     adapter_type = data.vsphere_virtual_machine.windowstemplate.network_interface_types[0]
-#   }
-
-#   disk {
-#     label            = "disk0"
-#     size             = data.vsphere_virtual_machine.windowstemplate.disks.0.size
-#     eagerly_scrub    = data.vsphere_virtual_machine.windowstemplate.disks.0.eagerly_scrub
-#     thin_provisioned = data.vsphere_virtual_machine.windowstemplate.disks.0.thin_provisioned
-#   }
-
-#   clone {
-#     template_uuid = data.vsphere_virtual_machine.windowstemplate.id
-#     customize {
-#       windows_options {
-#         computer_name = each.key
-#         # admin_password = var.admin_password
-#       }
-
-#       network_interface {
-#         ipv4_address = each.value.network_interface.ipv4_address
-#         ipv4_netmask = each.value.network_interface.ipv4_netmask
-#       }
-#       ipv4_gateway    = each.value.network_interface.ipv4_gateway
-#       dns_server_list = [each.value.network_interface.ipv4_dns_servers]
-#       /*
-#       network_interface {
-#         ipv4_address = var.vm_ip
-#         ipv4_netmask = var.vm_cidr
-#       }
-#       ipv4_gateway = var.default_gw
-#       dns_server_list = ["1.2.3.4"]
-#       */
-
-#     }
-#   }
 # }

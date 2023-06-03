@@ -6,6 +6,37 @@ locals {
       "portgroup" = "${local.fortigate_block.fortigate_onprem_nessus.name}"
       "disksize"  = 60
     }
+
+    win-veeam01 = {
+      "num_cpus"  = "4"
+      "memory"    = "32192"
+      "portgroup" = "${local.fortigate_block.fortigate_onprem_bastion.name}"
+      "disksize"  = 80
+    }
+
+      win-dc01 = {
+      "num_cpus"  = "4"
+      "memory"    = "32192"
+      "portgroup" = "${local.fortigate_block.fortigate_onprem_ad.name}"
+      "disksize"  = 60
+    }
+       win-exchange01 = {
+      "num_cpus"  = "4"
+      "memory"    = "32192"
+      "portgroup" = "${local.fortigate_block.fortigate_onprem_exchange.name}"
+      "disksize"  = 60
+    }
+
+    win-winbast01 = {
+      "num_cpus"  = "4"
+      "memory"    = "32192"
+      "portgroup" = "${local.fortigate_block.fortigate_onprem_bastion.name}"
+      "disksize"  = 60
+    }
+
+
+
+
   }
 }
 

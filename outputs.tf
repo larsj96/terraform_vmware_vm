@@ -10,3 +10,7 @@
 output "fortigate" {
   value = local.fortigate_block
 }
+
+output "vm" {
+  value = local.linux_vms
+}
