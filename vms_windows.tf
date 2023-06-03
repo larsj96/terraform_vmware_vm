@@ -14,13 +14,13 @@ locals {
       "disksize"  = 80
     }
 
-      win-dc01 = {
+    win-dc01 = {
       "num_cpus"  = "4"
       "memory"    = "32192"
       "portgroup" = "${local.fortigate_block.fortigate_onprem_ad.name}"
       "disksize"  = 60
     }
-       win-exchange01 = {
+    win-exchange01 = {
       "num_cpus"  = "4"
       "memory"    = "32192"
       "portgroup" = "${local.fortigate_block.fortigate_onprem_exchange.name}"
@@ -66,7 +66,7 @@ resource "vsphere_virtual_machine" "windows_vm" {
   memory   = each.value.memory
 
   network_interface {
-     network_id = data.vsphere_network.networks["fortigate_onprem_${each.value.portgroup}"].id
+    network_id   = data.vsphere_network.networks["fortigate_onprem_${each.value.portgroup}"].id
     adapter_type = "vmxnet3"
   }
 
