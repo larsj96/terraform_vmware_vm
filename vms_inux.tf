@@ -41,6 +41,13 @@ locals {
       "portgroup" = "${local.fortigate_block.fortigate_onprem_lindelab.name}"
       "disksize"  = 60
     }
+    openvpn01 = {
+      "num_cpus"  = "4"
+      "memory"    = "8192"
+      "portgroup" = "${local.fortigate_block.fortigate_onprem_lindelab.name}"
+      "disksize"  = 60
+    }
+
   }
 
 
