@@ -35,8 +35,8 @@ locals {
 
   linux_vms_lindelabb = {
 
-    martin123 = {
-      "num_cpus"  = "2"
+    openvpn = {
+      "num_cpus"  = "4"
       "memory"    = "8192"
       "portgroup" = "${local.fortigate_block.fortigate_onprem_lindelab.name}"
       "disksize"  = 60
