@@ -26,6 +26,14 @@ locals {
       "portgroup" = "${local.fortigate_block.fortigate_onprem_internal_lb.name}"
       "disksize"  = 60
     }
+
+        terraformtest1 = {
+      "num_cpus"  = "2"
+      "memory"    = "8192"
+      "portgroup" = "${local.fortigate_block.fortigate_onprem_internal_lb.name}"
+      "disksize"  = 60
+    }
+
   }
 
 
