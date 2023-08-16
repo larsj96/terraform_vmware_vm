@@ -1,5 +1,4 @@
 
-
 # Fetch Network config (port group & vlan) from VMWARE_MGMT project / state, see data.tf
 
 locals {
@@ -26,6 +25,14 @@ locals {
       "portgroup" = "${local.fortigate_block.fortigate_onprem_internal_lb.name}"
       "disksize"  = 60
     }
+
+    hp3-fancontroll = {
+      "num_cpus"  = "2"
+      "memory"    = "8192"
+      "portgroup" = "${local.fortigate_block.fortigate_onprem_bastion.name}"
+      "disksize"  = 60
+    }
+
 
         terraformtest1 = {
       "num_cpus"  = "2"
