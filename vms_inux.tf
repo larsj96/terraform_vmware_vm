@@ -1,4 +1,3 @@
-
 # Fetch Network config (port group & vlan) from VMWARE_MGMT project / state, see data.tf
 
 locals {
@@ -27,6 +26,13 @@ locals {
     }
 
     hp3-fancontroll = {
+      "num_cpus"  = "2"
+      "memory"    = "8192"
+      "portgroup" = "${local.fortigate_block.fortigate_onprem_bastion.name}"
+      "disksize"  = 60
+    }
+
+    hp2-fancontroll = {
       "num_cpus"  = "2"
       "memory"    = "8192"
       "portgroup" = "${local.fortigate_block.fortigate_onprem_bastion.name}"
